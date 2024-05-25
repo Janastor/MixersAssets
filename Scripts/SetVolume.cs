@@ -25,6 +25,11 @@ public class SetVolume : MonoBehaviour
         _volumeSlider.onValueChanged.AddListener(ChangeVolume);
     }
     
+    private void OnDestroy()
+    {
+        _volumeSlider.onValueChanged.RemoveListener(ChangeVolume);
+    }
+    
     private void ChangeVolume(float sliderValue)
     {
         float parameterValue = Mathf.Log10(Mathf.Clamp(sliderValue, _minSliderValue, _maxSliderValue)) * (_maxVolume - _zeroVolume) / 4f + _maxVolume;

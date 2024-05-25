@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,21 @@ public class MuteButton : MonoBehaviour
 {
     [SerializeField] private AudioMixer _audioMixer;
 
+    private Button _button;
     private const string ExposedParameter = "MasterVolume";
     private float _lastValue;
 
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(ChangeVolume);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(ChangeVolume);
     }
-    
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveListener(ChangeVolume);
+    }
+
     private void ChangeVolume()
     {
         if (_audioMixer.GetFloat(ExposedParameter, out float value) && value > -80)
