@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Button))]
 
-public class PlaySound : MonoBehaviour
+public class SoundPlayer : MonoBehaviour
 {
     private AudioSource _audioSource;
     private Button _button;

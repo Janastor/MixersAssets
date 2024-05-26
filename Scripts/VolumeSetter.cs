@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
 
-public class SetVolume : MonoBehaviour
+public class VolumeSetter : MonoBehaviour
 {
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private string _exposedParameter;
